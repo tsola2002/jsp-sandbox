@@ -3,6 +3,7 @@ package com.tsola2002.jspsandbox;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,9 +15,17 @@ public class AddServlet extends HttpServlet {
 		
 		int k = i + j;
 		
-		PrintWriter out = res.getWriter();
+		Cookie cookie = new Cookie("k", k + "");
 		
-		out.println("result is :" + k);
+		// this will send the response to the clinet
+		res.addCookie(cookie);
+		//Cookie
+		
+		res.sendRedirect("sq");
+		
+		//PrintWriter out = res.getWriter();
+		
+		//out.println("result is :" + k);
 		
 	}
 }
